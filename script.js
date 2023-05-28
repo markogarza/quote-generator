@@ -9,8 +9,20 @@ let data = [];
 
 const newQuote = () => {
   const quote = data[Math.floor(Math.random() * data.length)];
+  //   Check if quote is long
+  if (quote.text.length > 90) {
+    quoteText.classList.add("long-quote");
+  } else {
+    quoteText.classList.remove("long-quote");
+  }
   quoteText.textContent = quote.text;
-  quoteAuthor.textContent = quote.author;
+
+  //   Check if author is unknown
+  if (!quote.text) {
+    quoteAuthor.textContent = "Unknown";
+  } else {
+    quoteAuthor.textContent = quote.author;
+  }
 };
 
 const getQuotes = async () => {
