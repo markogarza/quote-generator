@@ -18,7 +18,7 @@ const newQuote = () => {
   quoteText.textContent = quote.text;
 
   //   Check if author is unknown
-  if (!quote.text) {
+  if (!quote.author) {
     quoteAuthor.textContent = "Unknown";
   } else {
     quoteAuthor.textContent = quote.author;
@@ -35,4 +35,14 @@ const getQuotes = async () => {
   }
 };
 
+const tweetQuote = () => {
+  const tweetUrl = `https://twitter.com/intent/tweet?text=${quoteText.textContent} - ${quoteAuthor.textContent}`;
+  window.open(tweetUrl, "_blank");
+};
+
+// Event Listeners
+buttonTwitter.addEventListener("click", tweetQuote);
+buttonNewQuote.addEventListener("click", newQuote);
+
+// onLoad
 getQuotes();
